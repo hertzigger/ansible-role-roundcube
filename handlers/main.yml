@@ -5,6 +5,9 @@
     target: /usr/share/dbconfig-common/data/roundcube/install/mysql
     state: import
 
+- name: regenerate /etc/roundcube/debian-db.php
+  command: dbconfig-generate-include /etc/dbconfig-common/roundcube.conf /etc/roundcube/debian-db.php
+
 - name: restart php5-fpm
   service:
     name: php5-fpm
@@ -14,5 +17,4 @@
   service:
     name: nginx
     state: restarted
-
 
