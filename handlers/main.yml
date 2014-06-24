@@ -6,7 +6,7 @@
     state: import
 
 - name: regenerate /etc/roundcube/debian-db.php
-  command: dbconfig-generate-include /etc/dbconfig-common/roundcube.conf /etc/roundcube/debian-db.php
+  command: dbconfig-generate-include -f php -O root:www-data -m 0640 /etc/dbconfig-common/roundcube.conf /etc/roundcube/debian-db.php
 
 - name: restart php5-fpm
   service:
