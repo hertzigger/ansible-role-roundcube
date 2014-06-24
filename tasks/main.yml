@@ -1,2 +1,12 @@
 ---
-# tasks file for .
+- name: ensure dependencies available through apt are installed
+  apt:
+    pkg: "{{ item }}"
+    state: latest
+    update_cache: yes
+    cache_valid_time: 600
+  with_items:
+    - nginx
+    - php5
+    - php5-fpm
+    - roundcube-mysql
