@@ -1,3 +1,4 @@
+.private
 .vagrant
 roles/*
 !roles/marklee77.roundcube
