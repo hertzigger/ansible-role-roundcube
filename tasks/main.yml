@@ -36,3 +36,41 @@
     - "%"
     - localhost
 
+- name: update /etc/nginx/sites-available/roundcube from template
+  template:
+    src: etc/nginx/sites-available/roundcube
+    dest: /etc/nginx/sites-available/roundcube
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - restart nginx
+
+- name: ensure /etc/nginx/sites-enabled/roundcube exists and links to ../sites-available/roundcube
+  file:
+    path: /etc/nginx/sites-enabled/roundcube
+    src: ../sites-available/roundcube
+    force: yes
+    state: link
+  notify:
+    - restart nginx
+
+- name: ensure that there is not a hostname collision with the nginx default host
+  lineinfile:
+    dest: /etc/nginx/sites-available/default
+    regexp: '^(\s+)(server_name {{ roundcube_hostname }};.*)$'
+    backrefs: yes
+    line: '\1#\2'
+    state: present
+  notify:
+    - restart nginx
+
+- name: ensure roundcube services are started and enabled
+  service:
+    name: "{{ item }}"
+    state: started
+    enabled: yes
+  with_items:
+    - nginx
+    - php5-fpm
+
