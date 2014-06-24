@@ -13,3 +13,26 @@
     - roundcube-mysql
     - roundcube-plugins
     - roundcube-plugins-extra
+
+- name: ensure /srv/roundcube links to /var/lib/roundcube
+  file:
+    path: /srv/roundcube
+    src: /var/lib/roundcube
+    state: link
+
+- name: ensure roundcube database is present
+  mysql_db:
+    name: roundcube
+    target: /usr/share/dbconfig-common/data/roundcube/install/mysql
+    state: import
+
+- name: ensure roundcube database user is present
+  mysql_user:
+    name: roundcube
+    host: "{{ item }}"
+    password: "{{ roundcube_mysql_password }}"
+    priv: roundcube.*:ALL
+  with_items:
+    - "%"
+    - localhost
+
