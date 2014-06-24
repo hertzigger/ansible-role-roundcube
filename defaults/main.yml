@@ -5,6 +5,7 @@ roundcube_mysql_password: "{{ lookup('password', roundcube_run_dir + '/credentia
 roundcube_hostname: localhost
 roundcube_http_port: 80
 roundcube_https_port: 443
+roundcube_enable_ssl: true
 roundcube_require_ssl: true
 
 roundcube_ssl_cert_file: /etc/ssl/private/roundcube.pem
