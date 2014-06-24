@@ -47,6 +47,16 @@
   notify:
     - regenerate /etc/roundcube/debian-db.php
 
+- name: update /etc/roundcube/main.inc.php from template
+  template:
+    src: etc/roundcube/main.inc.php
+    dest: /etc/roundcube/main.inc.php
+    owner: root
+    group: www-data
+    mode: 0640
+  notify:
+    - regenerate /etc/roundcube/debian-db.php
+
 - name: update /etc/php5/fpm/pool.d/roundcube.conf from template
   template:
     src: etc/php5/fpm/pool.d/roundcube.conf
