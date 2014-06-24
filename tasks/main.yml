@@ -9,4 +9,7 @@
     - nginx
     - php5
     - php5-fpm
+    - roundcube
     - roundcube-mysql
+    - roundcube-plugins
+    - roundcube-plugins-extra
