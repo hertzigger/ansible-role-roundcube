@@ -1,7 +1,7 @@
 ---
 roundcube_run_dir: "{{ lookup('env', 'PWD') }}"
-roundcube_root_mysql_password: "{{ lookup('password', roundcube_run_dir + '/credentials/root-mysql-password') }}"
-roundcube_roundcube_mysql_password: "{{ lookup('password', roundcube_run_dir + '/credentials/roundcube-mysql-password') }}"
+roundcube_root_mysql_password: "{{ lookup('password', roundcube_run_dir + '/private/credentials/root-mysql-password') }}"
+roundcube_roundcube_mysql_password: "{{ lookup('password', roundcube_run_dir + '/private/credentials/roundcube-mysql-password') }}"
 
 roundcube_hostname: localhost
 roundcube_http_port: 80

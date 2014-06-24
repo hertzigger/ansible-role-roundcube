@@ -37,6 +37,16 @@
     - "%"
     - localhost
 
+- name: update /etc/php5/fpm/pool.d/roundcube.conf from template
+  template:
+    src: etc/php5/fpm/pool.d/roundcube.conf
+    dest: /etc/php5/fpm/pool.d/roundcube.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - restart php5-fpm
+
 - name: update /etc/nginx/sites-available/roundcube from template
   template:
     src: etc/nginx/sites-available/roundcube
