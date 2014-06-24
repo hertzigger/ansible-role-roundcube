@@ -23,14 +23,15 @@
 - name: ensure roundcube database is present
   mysql_db:
     name: roundcube
-    target: /usr/share/dbconfig-common/data/roundcube/install/mysql
-    state: import
+    state: present
+  notify:
+    - import roundcube database
 
 - name: ensure roundcube database user is present
   mysql_user:
     name: roundcube
     host: "{{ item }}"
-    password: "{{ roundcube_mysql_password }}"
+    password: "{{ roundcube_roundcube_mysql_password }}"
     priv: roundcube.*:ALL
   with_items:
     - "%"
