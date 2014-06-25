@@ -1,5 +1,5 @@
 ---
-- name: ensure dependencies available through apt are installed
+- name: ensure roundcube packages and dependencies are installed
   apt:
     pkg: "{{ item }}"
     state: latest

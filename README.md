@@ -1,38 +1,49 @@
-Role Name
-========
+marklee77.roundcube
+===================
 
-A brief description of the role goes here.
+roundcube webmail
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+MySQL or MariaDB
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+- roundcube_run_dir: "{{ lookup('env', 'PWD') }}"
+- roundcube_root_mysql_password: "{{ lookup('password', roundcube_run_dir + '/private/credentials/root-mysql-password') }}"
+- roundcube_roundcube_mysql_password: "{{ lookup('password', roundcube_run_dir + '/private/credentials/roundcube-mysql-password') }}"
+- roundcube_des_key: "{{ lookup('password', roundcube_run_dir + '/private/credentials/roundcube-des-key length=24') }}"
 
-Dependencies
-------------
+- roundcube_hostname: localhost
+- roundcube_http_port: 80
+- roundcube_https_port: 443
+- roundcube_enable_ssl: true
+- roundcube_require_ssl: true
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+- roundcube_ssl_cert_file: ""
+- roundcube_ssl_key_file: ""
+
+- roundcube_imap_host: localhost
 
 Example Playbook
 -------------------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
-    - hosts: servers
+    - hosts: all
+      sudo: True
       roles:
-         - { role: username.rolename, x: 42 }
+        - marklee77.roundcube
 
 License
 -------
 
-BSD
+GPLv2
 
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Mark Stillwell
+
+http://stillwell.me
+
