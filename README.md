@@ -1,6 +1,8 @@
 marklee77.roundcube
 ===================
 
+[![Build Status](https://travis-ci.org/marklee77/ansible-role-roundcube.svg?branch=master)](https://travis-ci.org/marklee77/ansible-role-roundcube)
+
 roundcube webmail
 
 Requirements
