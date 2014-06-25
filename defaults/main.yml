@@ -7,8 +7,8 @@ roundcube_des_key: "{{ lookup('password', roundcube_run_dir + '/private/credenti
 roundcube_hostname: localhost
 roundcube_http_port: 80
 roundcube_https_port: 443
-roundcube_enable_ssl: true
-roundcube_require_ssl: true
+roundcube_enable_ssl: false
+roundcube_require_ssl: false
 
 roundcube_ssl_cert_file: ""
 roundcube_ssl_key_file: ""
