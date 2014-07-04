@@ -219,7 +219,7 @@ $rcmail_config['message_cache_lifetime'] = '10d';
 // enforce connections over https
 // with this option enabled, all non-secure connections will be redirected.
 // set the port for the ssl connection as value of this option if it differs from the default 443
-$rcmail_config['force_https'] = false;
+$rcmail_config['force_https'] = {{ roundcube_require_ssl }};
 
 // tell PHP that it should work as under secure connection
 // even if it doesn't recognize it as secure ($_SERVER['HTTPS'] is not set)
@@ -266,7 +266,7 @@ $rcmail_config['session_storage'] = 'db';
 
 // Use these hosts for accessing memcached
 // Define any number of hosts in the form of hostname:port or unix:///path/to/socket.file
-$rcmail_config['memcache_hosts'] = null; // e.g. array( 'localhost:11211', '192.168.1.12:11211', 'unix:///var/tmp/memcached.sock' );
+$rcmail_config['memcache_hosts'] = array('localhost:11211'); // e.g. array( 'localhost:11211', '192.168.1.12:11211', 'unix:///var/tmp/memcached.sock' );
 
 // check client IP in session athorization
 $rcmail_config['ip_check'] = false;
@@ -303,7 +303,7 @@ $rcmail_config['username_domain'] = '';
 // %d - domain (http hostname without the first part)
 // %z - IMAP domain (IMAP hostname without the first part)
 // For example %n = mail.domain.tld, %t = domain.tld
-$rcmail_config['mail_domain'] = '';
+$rcmail_config['mail_domain'] = '%d';
 
 // Password charset.
 // Use it if your authentication backend doesn't support UTF-8.
@@ -386,10 +386,10 @@ $rcmail_config['mime_magic'] = null;
 $rcmail_config['mime_types'] = null;
 
 // path to imagemagick identify binary
-$rcmail_config['im_identify_path'] = null;
+$rcmail_config['im_identify_path'] = '/usr/bin/identify';
 
 // path to imagemagick convert binary
-$rcmail_config['im_convert_path'] = null;
+$rcmail_config['im_convert_path'] = '/usr/bin/convert';
 
 // Size of thumbnails from image attachments displayed below the message content.
 // Note: whether images are displayed at all depends on the 'inline_images' option.
@@ -411,7 +411,7 @@ $rcmail_config['no_save_sent_messages'] = false;
 // ----------------------------------
 
 // List of active plugins (in plugins/ directory)
-$rcmail_config['plugins'] = array();
+$rcmail_config['plugins'] = array('sieverules', 'fail2ban', 'dkimstatus');
 
 // ----------------------------------
 // USER INTERFACE
@@ -476,7 +476,7 @@ $rcmail_config['trash_mbox'] = 'Trash';
 $rcmail_config['default_folders'] = array('INBOX', 'Drafts', 'Sent', 'Spam', 'Trash');
 
 // automatically create the above listed default folders on first login
-$rcmail_config['create_default_folders'] = false;
+$rcmail_config['create_default_folders'] = true;
 
 // protect the default folders from renames, deletes, and subscription changes
 $rcmail_config['protect_default_folders'] = true;
@@ -491,7 +491,7 @@ $rcmail_config['enable_spellcheck'] = true;
 
 // Enables spellchecker exceptions dictionary.
 // Setting it to 'shared' will make the dictionary shared by all users.
-$rcmail_config['spellcheck_dictionary'] = false;
+$rcmail_config['spellcheck_dictionary'] = true;
 
 // Set the spell checking engine. 'googie' is the default. 'pspell' is also available,
 // but requires the Pspell extensions. When using Nox Spell Server, also set 'googie' here.
@@ -773,7 +773,7 @@ $rcmail_config['htmleditor'] = 0;
 $rcmail_config['prettydate'] = true;
 
 // save compose message every 300 seconds (5min)
-$rcmail_config['draft_autosave'] = 300;
+$rcmail_config['draft_autosave'] = 120;
 
 // default setting if preview pane is enabled
 $rcmail_config['preview_pane'] = false;
@@ -887,7 +887,7 @@ $rcmail_config['forward_attachment'] = false;
 $rcmail_config['default_addressbook'] = null;
 
 // Enables spell checking before sending a message.
-$rcmail_config['spellcheck_before_send'] = false;
+$rcmail_config['spellcheck_before_send'] = true;
 
 // Skip alternative email addresses in autocompletion (show one address per contact)
 $rcmail_config['autocomplete_single'] = false;
