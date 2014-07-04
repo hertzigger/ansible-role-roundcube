@@ -411,7 +411,9 @@ $rcmail_config['no_save_sent_messages'] = false;
 // ----------------------------------
 
 // List of active plugins (in plugins/ directory)
-$rcmail_config['plugins'] = array('sieverules', 'fail2ban', 'dkimstatus');
+$rcmail_config['plugins'] = array('dkimstatus', 'emoticons', 'fail2ban', 
+                                  'listcommands', 'markasjunk2', 'sieverules'
+                                  'vcard_attachments', 'zipdownload');
 
 // ----------------------------------
 // USER INTERFACE
