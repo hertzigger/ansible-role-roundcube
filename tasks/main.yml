@@ -67,6 +67,20 @@
   notify:
     - restart php5-fpm
 
+- name: update roundcube plugin configurations from templates
+  template:
+    src: usr/share/roundcube/plugins/{{ item }}/config.inc.php
+    dest: /usr/share/roundcube/plugins/{{ item }}/config.inc.php
+    owner: root
+    group: www-data
+    mode: 0640
+  with_items:
+    - markasjunk2
+    - sieverules
+    - zipdownload
+  notify:
+    - restart php5-fpm
+
 - name: update /etc/nginx/sites-available/roundcube from template
   template:
     src: etc/nginx/sites-available/roundcube
