@@ -6,9 +6,11 @@
     update_cache: yes
     cache_valid_time: 600
   with_items:
+    - memcached
     - nginx
     - php5
     - php5-fpm
+    - php5-memcached
     - roundcube
     - roundcube-mysql
     - roundcube-plugins
