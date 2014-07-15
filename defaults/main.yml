@@ -14,3 +14,14 @@ roundcube_ssl_cert_file: ""
 roundcube_ssl_key_file: ""
 
 roundcube_imap_host: localhost
+
+roundcube_plugin_list:
+  - archive
+  - dkimstatus
+  - fail2ban 
+  - listcommands
+  - markasjunk2
+  - sieverules
+  - vcard_attachments
+  - zipdownload
+
