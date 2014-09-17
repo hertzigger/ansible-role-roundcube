@@ -16,7 +16,7 @@ before_install:
 install:
 
     # Install Ansible.
-    - sudo pip install --upgrade ansible
+    - sudo apt-get -y install ansible
     - ansible-playbook --version
 
     # Get Roles
@@ -39,3 +39,4 @@ script:
       | grep -q 'changed=0.*failed=0'
       && (echo 'Idempotence test: pass' && exit 0)
       || (echo 'Idempotence test: fail' && exit 1)
+
